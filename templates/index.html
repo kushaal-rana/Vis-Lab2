@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCA Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h1 class="heading">Billionaires Statistics Dataset</h1>
+        </nav>
+    </header>
+
+    <main>
+        <section class="controls">
+            <button id="showTableBtn">Scree Plot</button>
+            <button id="showElbowPlot">Elbow Plot</button>
+            <button id="plotBiplotBtn">BiPlot Plot</button>
+        </section>
+
+        <section id="screePlot">
+            <div id="combinedPlot" class="plot"></div>
+            <div id="pcaDetailsTableContainer"></div> <!-- Container for PCA Details Table -->
+        </section>
+        
+        <section id="elbowPlottt">
+            <div id="elbowPlot" class="plot"></div>
+        </section>
+        <section id="elbowPlottt">
+            <div id="plots" class="plot"></div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        var pcaData = {{ pcaData | tojson }};
+        var varianceExplained = {{ variance_explained | tojson }};
+        var cumulativeVariance = {{ cumulative_variance | tojson }};
+        var dataForPlot = {{ data_for_plot | tojson }};
+
+        document.getElementById('plotBiplotBtn').addEventListener('click', () => {
+        plotBiplot(dataForPlot.scores, dataForPlot.loadings);
+        });
+
+        document.getElementById('showElbowPlot').addEventListener('click', () => {
+            fetchWCSS();
+        });
+        document.getElementById('showTableBtn').addEventListener('click', () => {
+            createPCASummaryTable(pcaData);
+            createCombinedGraph(varianceExplained, cumulativeVariance);
+        });
+    </script>
+    <script src="../static/index.js"></script>
+</body>
+</html>

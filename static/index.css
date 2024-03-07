@@ -1,0 +1,34 @@
+.pca-details-table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+.pca-details-table th, .pca-details-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.pca-details-table th {
+    background-color: #4C2882; /* Change to match your preferred header color */
+    color: white;
+}
+
+.pca-details-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.navbar {
+    text-align: center;
+    background-color: #30da98;
+    padding: 39px;
+    margin-bottom: 20px;
+  }
+  
+  .heading {
+    margin: 0; /* Remove default margin */
+  }
+
+  .highlight {
+    background-color: #ffff99  !important; /* or any color you want to highlight with */
+}
