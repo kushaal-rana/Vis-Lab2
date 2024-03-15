@@ -5,34 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCA Visualization</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/index.css">
 </head>
 <body>
 
-    <header>
         <nav class="navbar">
             <h1 class="heading">Billionaires Statistics Dataset</h1>
         </nav>
-    </header>
 
     <main>
         <section class="controls">
             <button id="showTableBtn">Scree Plot</button>
             <button id="showElbowPlot">Elbow Plot</button>
-            <button id="plotBiplotBtn">BiPlot Plot</button>
+            <button id="clusterToggle" style="display: none;">Toggle BiPlot Clusters</button>
+            <button id="scatterPlotMatrixBtn">Scatter Plot Matrix</button>
         </section>
 
         <section id="screePlot">
             <div id="combinedPlot" class="plot"></div>
             <div id="pcaDetailsTableContainer"></div> <!-- Container for PCA Details Table -->
         </section>
+
+        <section id="SPM">
+            <div id="scatterPlotMatrix" class="plot"></div>
+        </section>
+        
         
         <section id="elbowPlottt">
             <div id="elbowPlot" class="plot"></div>
         </section>
-        <section id="elbowPlottt">
+        <section id="BiPlottt">
             <div id="plots" class="plot"></div>
         </section>
+    
     </main>
 
     <!-- Scripts -->
@@ -41,13 +47,21 @@
         var varianceExplained = {{ variance_explained | tojson }};
         var cumulativeVariance = {{ cumulative_variance | tojson }};
         var dataForPlot = {{ data_for_plot | tojson }};
+        var isToggled = false;
 
-        document.getElementById('plotBiplotBtn').addEventListener('click', () => {
-        plotBiplot(dataForPlot.scores, dataForPlot.loadings);
-        });
+        document.getElementById('scatterPlotMatrixBtn').addEventListener('click', () => {
+        generateScatterPlotMatrix();
+        
+    });
+
 
         document.getElementById('showElbowPlot').addEventListener('click', () => {
-            fetchWCSS();
+            fetchMSE();
+        });
+        document.getElementById('clusterToggle').addEventListener('click', () => {
+             isToggled = !isToggled;
+            plotBiplot(dataForPlot);
+
         });
         document.getElementById('showTableBtn').addEventListener('click', () => {
             createPCASummaryTable(pcaData);

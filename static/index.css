@@ -1,11 +1,28 @@
 .pca-details-table {
-    width: 50%;
+    width: 50%; /* Adjust the width as needed */
+    margin-left: 0;
+    margin-right: auto;
+    margin-left: 961px;
+    margin-top: -500px; /* Adjust as needed to move the table up */
     border-collapse: collapse;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 0.72em; /* Adjust the font size for table content */
+}
+
+body{
+    background-color:#b2cddf ;
+  
+  }
+  
+/* ... rest of your styles ... */
+
+.pca-details-table .first-column {
+    width: 80px; /* Adjust as needed */
 }
 
 .pca-details-table th, .pca-details-table td {
     border: 1px solid black;
-    padding: 8px;
+    padding: 6px;
     text-align: left;
 }
 
@@ -14,21 +31,73 @@
     color: white;
 }
 
-.pca-details-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+.pca-details-table tr {
+    background-color: #ff9e80;
 }
 
-.navbar {
-    text-align: center;
-    background-color: #30da98;
-    padding: 39px;
-    margin-bottom: 20px;
-  }
-  
-  .heading {
-    margin: 0; /* Remove default margin */
-  }
 
   .highlight {
-    background-color: #ffff99  !important; /* or any color you want to highlight with */
+    background-color: #fbc784  !important; /* or any color you want to highlight with */
 }
+
+#scatterPlotMatrix svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+button {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker shade of green */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add a shadow on hover */
+  }
+  
+  button:focus {
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 0 3px rgba(70, 153, 179, 0.6); /* Adds a light blue glow */
+  }
+  
+ #clusterToggle {
+    background-color: #c0b4b4; /* Set the background color to a light gray */
+    color: #000000; /* Set the text color to a darker gray */
+    cursor: not-allowed; /* Change cursor to indicate button is not clickable */
+    pointer-events: none; /* Disable pointer events to prevent button from being clicked */
+  }
+  
+  .controls {
+    text-align: center; /* Centers your buttons if they are block level */
+  }
+  
+.navbar {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center horizontally in flex container */
+  align-items: center; /* Center vertically in flex container */
+  background-color: #333; /* Dark background for the navbar */
+  padding: 14px 16px; /* Add some padding for aesthetic spacing */
+}
+
+.navbar h1 {
+  color: white;
+  margin: 0; /* Removes default margin from h1 */
+  font-size: 1.8em;
+  padding: 14px 16px;
+
+}
+
+
+
